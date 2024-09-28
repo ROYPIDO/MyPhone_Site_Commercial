@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Produit{% endblock %}
+
+{% block body %}
+
+<div class="container">
+ <h1>Edit Produit</h1>
+ <div class="btn-group" role="group" aria-label="Basic example">
+			<a href="{{ path('app_produit_index') }}" class="btn btn-primary">
+				<i class="fas fa-undo"></i>
+			</a>
+
+		
+			{{ include('produit/_delete_form.html.twig') }}
+
+			<button type="button" class="btn btn-primary">Right</button>
+		</div>
+
+    {{ include('produit/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+
+    
+</div>
+   
+{% endblock %}

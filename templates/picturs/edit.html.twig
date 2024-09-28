@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Picturs{% endblock %}
+
+{% block body %}
+    <h1>Edit Picturs</h1>
+
+    {{ include('picturs/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_picturs_index') }}">back to list</a>
+
+    {{ include('picturs/_delete_form.html.twig') }}
+{% endblock %}

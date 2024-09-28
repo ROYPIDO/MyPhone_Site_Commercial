@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+<div class="row  mt-5 p-1">
+		{% for produit in produits %}
+			<div class="col-3 ">
+           
+               {#______ debut card de bootstrap_______ #}
+				<div class="card m-1" >
+					<img src="{{ asset('images/' ~ produit.image)  }}" class="card-img-top" alt="...">
+					<div class="card-body">
+						<h5 class="card-title">{{ produit.name }}</h5>
+						<p class="card-text">{{ produit.description|slice(0, 100) }} ...</p>
+                        <p><span class="bg-info fw-semibold fs-3">{{ produit.prix }}€</span></p>
+						<a href="{{  path('app_user_produit_show',{'id' : produit.id }) }}" class="btn btn-primary">Voir détail</a>
+					</div>
+				</div>
+            {# _________fin card bootstrap________________ #}         
+        
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
+	
+
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompteController!
+{% endblock %}
+
+{% block body %}
+
+	<h3>{{ app.user.nom }}</h3>
+	<hr>
+
+	<img src="{{ asset('images/' ~ app.user.avatar) }}" alt="" style="width:100px">
+
+	{{ form_start(form) }}
+	{{ form_widget(form) }}
+	<button class="btn">{{ button_label|default('Save') }}</button>
+
+
+	{% for item in app.user.commandes %}
+
+		{% if item.livraison == true %}
+
+			<p>{{ item.id }}</p>
+			<p>{{ item.total | number_format(2) }}</p>
+			<p>{{ item.dateCommande | date('Y/m/d') }}</p>
+			<p>{{ item.id }}</p>
+
+			{% for item in item.detailCommandes %}
+				
+			{% endfor %}
+
+		{% endif %}
+
+	{% endfor %}
+
+	<hr>
+
+		{% for item in  app.user.commandes %}
+
+		{% if item.livraison == false %}
+
+			<p>{{ item.id }}</p>
+			<p>{{ item.total | number_format(2) }}</p>
+			<p>{{ item.dateCommande | date('Y/m/d') }}</p>
+			<p>{{ item.id }}</p>
+
+			{# affiche les details de chaque commande  #}
+
+			{% for item in item.detailCommandes %}
+				
+			{% endfor %}
+
+		{% endif %}
+
+	{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+

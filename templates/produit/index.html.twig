@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+<div class="ms-5 me-5">
+<div><h1 class="text-center">Produit index</h1>
+<a href="{{ path('app_produit_new') }}" class="btn btn-primary float-end m-1">Create new</a></div>
+
+<hr class="m-1">
+    <table class="table mt-2">
+        <thead>
+            <tr style="background-color : #ABCBE3">
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Prix</th>
+                <th>Quantity</th>
+                <th>Ref</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.name }}</td>
+                <td>{{ produit.description }}</td>
+                <td>{{ produit.prix }}</td>
+                <td>{{ produit.quantity }}</td>
+                <td>{{ produit.ref }}</td>
+                <td><img src="{{ asset('images/' ~ produit.image ) }}" alt="" style="width: 50px"></td>
+                <td>
+                    <a href="{{ path('app_produit_show', {'id': produit.id}) }}"><i class="far fa-eye"></i></a>
+                    <a href="{{ path('app_produit_edit', {'id': produit.id}) }}"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    
+
+    
+{% endblock %}
